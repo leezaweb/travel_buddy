@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Destination | Travel Buddy</title> {%load staticfiles%}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+	  <link rel="stylesheet" type="text/css" href="{% static 'travelBuddy/css/style.css' %}">
+  </head>
+  <body>
+
+    <h5><a href="/travels">Home</a></h5>
+    <h5><a href="/logout">Log out</a></h5>
+
+
+    {%for trip in trips%}
+    <h1>{{trip.destination}}</h1>
+    <p>Planned by: {{trip.planned_by.name}}</p>
+    <p>Description: {{trip.description}}</p>
+    <p>Start Date: {{trip.start_date}}</p>
+    <p>End Date: {{trip.end_date}}</p>
+    {%endfor%}
+
+    <h3>Other Users Joining the Trip</h3>
+    {%for traveller in travellers%}
+    <p>{{traveller.name}}</p>
+    {%endfor%}
+  </body>
+</html>

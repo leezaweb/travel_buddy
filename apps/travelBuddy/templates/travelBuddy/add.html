@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add a Trip | Travel Buddy</title> {%load staticfiles%}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+	  <link rel="stylesheet" type="text/css" href="{% static 'travelBuddy/css/style.css' %}">
+  </head>
+  <body>
+
+    <h5><a href="/travels">Home</a></h5>
+    <h5><a href="/logout">Log out</a></h5>
+
+
+    {% if messages %}
+      <ul>
+        {% for message in messages%}
+          <li class="{{message.tags}}">{{message}}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+
+    <h1>Add a Trip</h1>
+    <form class="" action="post" method="post">{%csrf_token%}
+      <label for="destination">Destination:</label>
+      <input type="text" name="destination" value=""><br>
+      <label for="description">Description:</label><br>
+      <textarea name="description" rows="8" cols="80"></textarea><br>
+      <label for="start_date">Start Date:</label>
+      <input type="date" name="start_date" value="####-##-##"><br>
+      <label for="end_date">End Date:</label>
+      <input type="date" name="end_date" value="####-##-##"><br>
+      <input type="submit" name="" value="add">
+    </form>
+
+  </body>
+</html>

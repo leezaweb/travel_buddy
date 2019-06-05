@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login and Registration | Travel Buddy</title> {%load staticfiles%}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+	  <link rel="stylesheet" type="text/css" href="{% static 'travelBuddy/css/style.css' %}">
+  </head>
+  <body>
+    <h2>Travel Buddy</h2>
+    <h1>Login</h1>
+    {% if messages %}
+      <ul>
+        {% for message in messages%}
+          {%if "error" in message.tags %}
+            <li class="{{message.tags}}">{{message}}</li>
+          {%endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+
+
+    <form action="/login" method="post"> {%csrf_token%}
+      Username: <input type="text" name="loginusername"><br>
+      Password: <input type="password" name="loginpassword"><br>
+      <input type="hidden" name="action" value="login">
+      <input type="submit" value="go">
+    </form>
+
+    <h1>Register</h1>
+    {% if messages %}
+      <ul>
+        {% for message in messages%}
+          {%if "warning" in message.tags %}
+            <li class="{{message.tags}}">{{message}}</li>
+          {%endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+
+
+    <form action="/register" method="post">{%csrf_token%}
+      Name: <input type="text" name="name"><br>
+      Username: <input type="text" name="username"><br>
+      Password: <input type="password" name="password"><br>
+      Confirm Password: <input type="password" name="confirm_password"><br>
+      <input type="submit" value="go">
+    </form>
+  </body>
+</html>
